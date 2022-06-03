@@ -1,0 +1,7 @@
+cron:
+- description: "daily sync"
+  url: /api/service/sync
+  target: ad-account
+  schedule: every day 03:00
+  timezone: Asia/Taipei
+

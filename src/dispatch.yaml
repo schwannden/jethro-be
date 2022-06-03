@@ -1,0 +1,33 @@
+dispatch:
+  # ad account domain
+  - url: "amtool.8ndpoint.com/api/account*"
+    service: ad-account
+
+  # ad account staging
+  - url: "amtool-dev.8ndpoint.com/api/account*"
+    service: ad-account-staging
+
+  # amtool backend
+  - url: "amtool.8ndpoint.com/api*"
+    service: default
+
+  # amtool backend staging
+  - url: "amtool-dev.8ndpoint.com/api*"
+    service: staging
+
+  # amtool frontend
+  - url: "amtool.8ndpoint.com/*"
+    service: default-frontend
+
+  # amtool frontend staging
+  - url: "amtool-dev.8ndpoint.com/*"
+    service: staging-frontend
+
+  # afrd production (receives notification from citi bank)
+  - url: "afrd.mobagel.com/*"
+    service: afrd
+
+  # afrd production (receives notification from citi bank)
+  - url: "afrd.8ndpoint.com/*"
+    service: afrd
+

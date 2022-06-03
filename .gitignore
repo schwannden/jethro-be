@@ -1,0 +1,12 @@
+__pycache__
+data/
+*.pyc
+.idea
+*swp
+.env
+*.ipynb
+env
+src/.env
+src/key_pairs/*
+src/google_client_secret.json
+*.json

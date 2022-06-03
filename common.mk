@@ -1,0 +1,10 @@
+SHELL             := /bin/sh
+HOST              ?= 127.0.0.1
+GITROOT           := $(shell git rev-parse --show-toplevel)
+GIT_HASH          := $(shell git rev-parse --short HEAD)
+GIT_BASE_URL      ?= gitlab.ct.mobagel.com
+GIT_GROUP         ?= MOD
+DEFAULT_BRANCH    ?= develop
+ENVIRONMENT       ?= dev
+ACTION            ?= dev
+.DEFAULT_GOAL     := help

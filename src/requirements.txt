@@ -1,0 +1,13 @@
+# web
+uvicorn~=0.17.0
+fief-client[fastapi]
+awesome-exception~=1.0.0
+slack-sdk==3.14.1
+pydantic[dotenv]
+
+# gcs
+google-api-python-client~=2.47.0
+google-auth~=2.6.6
+google-cloud-firestore~=2.4.0
+google-cloud-storage~=2.3.0
+
