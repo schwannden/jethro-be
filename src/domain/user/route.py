@@ -13,17 +13,27 @@ fief = FiefAsync(
     settings.FIEF_API_CLIENT_SECRET,
 )
 
-scheme = OAuth2AuthorizationCodeBearer(  # !
+scheme = OAuth2AuthorizationCodeBearer(
     f"{settings.FIEF_API_DOMAIN}/authorize",
     f"{settings.FIEF_API_DOMAIN}/api/token",
-    scopes={"openid": "openid", "offline_access": "offline_access"},
+    scopes={"openid": "openid", "required_scope": "required_scope"},
 )
 
-auth = FiefAuth(fief, scheme)  # !
+auth = FiefAuth(fief, scheme)
 
 
 @router.get("")
 async def get_user(
-    access_token_info: FiefAccessTokenInfo = Depends(auth.authenticated()),  # !
+    access_token_info: FiefAccessTokenInfo = Depends(auth.authenticated(["openid", "required_scope"])),
 ):
     return access_token_info
+
+
+@router.get("/auth_url")
+async def auth_url():
+    redirect_url = await fief.auth_url(settings.redirect_url(), scope=["openid", "required_scope"])
+    from fastapi.logger import logger
+    logger.warning(redirect_url)
+    return {
+        "auth_url": redirect_url,
+    }

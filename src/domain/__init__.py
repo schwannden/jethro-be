@@ -6,8 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.requests import Request
 from fastapi.responses import JSONResponse
 
-from domain.user.schema import UserCreate, UserRead, UserUpdate
-
 
 class Router:
     @staticmethod
@@ -36,8 +34,7 @@ class Router:
     @staticmethod
     def web_router(app):
         from domain.service import route as service_route
+        from domain.user import route as user_route
 
-        for route in [
-            service_route,
-        ]:
+        for route in [service_route, user_route]:
             app.include_router(route.router)
